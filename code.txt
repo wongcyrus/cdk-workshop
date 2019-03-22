@@ -1,0 +1,39 @@
+SETUP
+
+npm install --global prettier
+nvm install node 11
+node --version
+npm i -g aws-cdk
+cdk --version
+mkdir cdk-workshop && cd cdk-workshop
+cdk init sample-app --language typescript
+
+
+WATCH 
+
+cd cdk-workshop
+nvm use 11
+npm run watch
+
+DEPLOY
+
+cdk synth
+cdk bootstrap
+cdk deploy
+
+INSATLL DEPENDENCIES
+
+npm install @aws-cdk/aws-lambda
+npm install @aws-cdk/aws-apigateway
+npm install @aws-cdk/aws-dynamodb
+npm install cdk-dynamo-table-viewer
+
+
+CHANGED CODE
+
+    const table = new dynamodb.Table(this, "Hits", {
+      partitionKey: {
+        name: "path",
+        type: dynamodb.AttributeType.String
+      }
+    });
